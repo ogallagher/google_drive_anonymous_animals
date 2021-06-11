@@ -1,0 +1,29 @@
+{
+  "name": "google_drive_anonymous_animals",
+  "version": "0.0.1",
+  "description": "Google Drive anonymous animals gallery.",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "google",
+    "drive",
+    "anonymous",
+    "animals",
+    "node",
+    "js"
+  ],
+  "author": "Owen Gallagher <github.com/ogallagher>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "canvas": "^2.8.0",
+    "child-process": "^1.0.2",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "worker-threads": "^1.0.0"
+  }
+}
