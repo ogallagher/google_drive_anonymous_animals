@@ -16,9 +16,12 @@ try {
 	
 	// constants
 	
+	const port = process.env.app_port || 8080
+	
 	// cross origin request origins
 	const origins = [
 		'http://localhost',	'http://127.0.0.1',		// local testing (same device)
+		'http://anonymousanimals.cloudno.de'		// free hosting
 	]
 	
 	const PUBLIC_DIR = './public'
@@ -50,7 +53,7 @@ try {
 		}
 	}))
 	
-	server.set('port', 80)
+	server.set('port', port)
 	
 	// serve website from public/
 	server.use(express.static(PUBLIC_DIR))
@@ -68,7 +71,7 @@ try {
 		console.log('sending zoo')
 		res.json(require(ZOO_PATH))
 	})
-
+	
 	// http server
 	server.listen(server.get('port'), on_start)
 	

@@ -3,6 +3,8 @@
 Owen Gallagher
 10 June 2021
 
+Brute-force search for animals, not currently used (not debugged).
+
 */
 
 const fs = require('fs')
