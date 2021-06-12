@@ -22,11 +22,30 @@
 		
 		<!-- custom css -->
 		<style>
+			section {
+				margin-top: 24px;
+			}
+			
 			/*
 			.animal-row:hover {
 				background-color: #555;
 			}
 			*/
+			
+			.animal-alphabetical {
+				position: relative;
+			}
+			.animal-alphabetical:hover {
+				background-color: #555;
+			}
+			a {
+				color: #ddd;
+				text-decoration: none;
+			}
+			a:hover {
+				color: #fff;
+				text-decoration: underline;
+			}
 		</style>
 		
 		<!-- jquery js -->
@@ -66,27 +85,43 @@
 	</div>
 </div>`
 			
+			const ANIMAL_NAME_TEMPLATE = 
+`<div class="p-2 col animal-alphabetical">
+	<a class="animal-name-ref stretched-link" href=""></a>
+</div>`
+			
 			let animals_container = null
+			let alphabetical_container = null
+			let animal_names = []
+			let animal_urls = {}
 			
 			$(document).ready(function() {
 				console.log('page ready')
 				animals_container = $('#animals-container')
+				alphabetical_container = $('#alphabetical-container')
 				
 				$.ajax('/zoo', {
 					method: 'get',
 					success: function(zoo) {
+						let promises = []
 						console.log(zoo)
+						
 						for (let animal of zoo) {
-							animal_to_url(animal)
-							.then(function(animal_url) {
-								console.log(`animal ${animal_url[0]} found`)
-								add_animal(animal_url[0], animal_url[1])
-								.then(animal_done)
-							})
-							.catch(function(animal_url) {
-								console.log(`animal ${animal_url[0]} not found`)
-							})
+							promises.push(
+								animal_to_url(animal)
+								.then(function(animal_url) {
+									console.log(`animal ${animal_url[0]} found`)
+									add_animal(animal_url[0], animal_url[1])
+									.then(animal_done)
+								})
+								.catch(function(animal_url) {
+									console.log(`animal ${animal_url[0]} not found`)
+								})
+							)
 						}
+						
+						Promise.all(promises)
+						.finally(alphabetical_animals)
 					},
 					error: function(err) {
 						console.log(err)
@@ -122,7 +157,7 @@
 			function add_animal(animal_name,img_url) {
 				return new Promise(function(resolve) {
 					let animal = $(ANIMAL_TEMPLATE)
-				
+					
 					animal.find('.animal-name')
 					.html(animal_name)
 					
@@ -131,8 +166,28 @@
 					
 					animals_container.append(animal)
 					
+					animal_names.push(animal_name)
+					animal_urls[animal_name] = img_url
+					
 					resolve([animal_name,img_url])
 				})
+			}
+			
+			function alphabetical_animals() {
+				console.log(`adding ${animal_names.length} alphabetized animals`)
+				$('#animal-count').html(animal_names.length)
+				
+				animal_names.sort()
+				
+				for (let animal_name of animal_names) {
+					let animal = $(ANIMAL_NAME_TEMPLATE)
+					
+					animal.find('.animal-name-ref')
+					.prop('href',animal_urls[animal_name])
+					.html(animal_name)
+					
+					alphabetical_container.append(animal)
+				}
 			}
 			
 			function animal_done(animal_url) {
@@ -148,11 +203,10 @@
 			<h1 class="h1">Google Drive Anonymous Animals</h1>
 		
 			<section>
-				<h2>About</h2>
+				<h2>Alphabetical Short List: <strong><span id="animal-count"></span></strong></h2>
 			
-				<p>
-					...
-				</p>
+				<div id="alphabetical-container" class="container row">
+				</div>
 			</section>
 		
 			<section>
@@ -213,9 +267,9 @@
 			</section>
 		</div>
 		
-		<footer class="container-wide px-3">
+		<footer class="container-wide px-3 mb-3">
 			<div class="row">
-				<a href="https://github.com/ogallagher">2021-06 Owen Gallagher</a>
+				<a href="https://github.com/ogallagher/google_drive_anonymous_animals">2021-06 Owen Gallagher</a>
 			</div>
 			<div class="row">
 				<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>

@@ -16,7 +16,7 @@ try {
 	
 	// constants
 	
-	const port = process.env.app_port || 8080
+	const port = process.env.app_port || 80
 	
 	// cross origin request origins
 	const origins = [
