@@ -16,6 +16,7 @@
     "js"
   ],
   "author": "Owen Gallagher <github.com/ogallagher>",
+  "repository": "https://github.com/ogallagher/google_drive_anonymous_animals",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
