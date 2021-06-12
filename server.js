@@ -16,7 +16,8 @@ try {
 	
 	// constants
 	
-	const port = process.env.app_port || 80
+	// const port = process.env.app_port || 80 // cloudnode
+	const port = process.env.PORT || 80 // vercel
 	
 	// cross origin request origins
 	const origins = [
