@@ -12,17 +12,21 @@ try {
 	const bodyparser = require('body-parser')
 	const cors = require('cors')
 	const cp = require('child_process')
-	const colors = require('colors')
+	const fs = require('fs/promises')
+	const path = require('path')
 	
 	// constants
+	require('dotenv').config({
+		override: true
+	})
 	
-	// const port = process.env.app_port || 80 // cloudnode
-	const port = process.env.PORT || 80 // vercel
+	const port = process.env.PORT || 80
+	const BASE_PATH = process.env.BASE_PATH || ''
 	
 	// cross origin request origins
 	const origins = [
-		'http://localhost',	'http://127.0.0.1',		// local testing (same device)
-		'http://anonymousanimals.cloudno.de'		// free hosting
+		// local testing (same device)
+		'http://localhost',	'http://127.0.0.1',
 	]
 	
 	const PUBLIC_DIR = './public'
@@ -57,18 +61,35 @@ try {
 	server.set('port', port)
 	
 	// serve website from public/
-	server.use(express.static(PUBLIC_DIR))
+	server.use(BASE_PATH, express.static(PUBLIC_DIR))
+
+	if (BASE_PATH.length > 0) {
+		fs.readdir(`${PUBLIC_DIR}/img`)
+		.then((imgFiles) => {
+			for (const imgFile of imgFiles) {
+				server.get(`/img/${imgFile}`, function(_req, res) {
+					res.sendFile(path.resolve(`${PUBLIC_DIR}/img/${imgFile}`))
+				})
+			}
+		})
+
+		for (const rootFile of ['manifest.json', 'browserconfig.xml']) {
+			server.get(`/${rootFile}`, function(_req, res) {
+				res.sendFile(path.resolve(`${PUBLIC_DIR}/${rootFile}`))
+			})
+		}
+	}
 	
 	// route root path to about page
-	server.get('/', function(req,res,next) {
-		console.log(`routing root path to /anonymous_animals.html`)
+	server.get(`${BASE_PATH}/`, function(req,res,next) {
+		console.log(`routing root=${BASE_PATH} path to /anonymous_animals.html`)
 		res.sendFile(`${PUBLIC_DIR}/anonymous_animals.html`, {
 			root: '.'
 		})
 	})
 	
 	// handle /zoo
-	server.get('/zoo', function(req,res) {
+	server.get(`${BASE_PATH}/zoo`, function(req,res) {
 		console.log('sending zoo')
 		res.json(require(ZOO_PATH))
 	})
@@ -79,7 +100,7 @@ try {
 	// methods
 	
 	function on_start() {
-		console.log('server running')
+		console.log(`server running at path=${BASE_PATH} port=${port}`)
 		
 		// spawn_zookeeper()
 	}

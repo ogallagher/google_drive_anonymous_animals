@@ -1,96 +1,100 @@
 <!DOCTYPE html>
 <html>
-	<head>
-        <meta charset="utf-8"/>
-        <!--scales viewport depending on worldspace device width-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		
-        <meta name="description" content="Google Drive anonymous animals, brute force."/>
-        <meta name="author" content="Owen Gallagher <github.com/ogallagher>"/>
-		<meta name="page-name" content="anonymous_animals.html"/>
-		
-		<title>
-			Google Drive Anonymous Animals
-		</title>
-		
-		<!-- favicons -->
-		<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
-		<link rel="icon" type="image/png" sizes="192x192"  href="/img/android-icon-192x192.png">
-		<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-		<link rel="manifest" href="/manifest.json">
-		<meta name="msapplication-TileColor" content="#333333">
-		<meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
-		<meta name="theme-color" content="#333333">
-		
-		<!-- bootstrap css -->
-		<link 
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" 
-			rel="stylesheet" 
-			integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" 
-			crossorigin="anonymous"/>
-		
-		<!-- custom css -->
-		<style>
-			section {
-				margin-top: 24px;
-			}
-			
-			/*
+
+<head>
+	<meta charset="utf-8" />
+	<!--scales viewport depending on worldspace device width-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="description" content="Google Drive anonymous animals, brute force." />
+	<meta name="author" content="Owen Gallagher <github.com/ogallagher>" />
+	<meta name="page-name" content="anonymous_animals.html" />
+
+	<title>
+		Google Drive Anonymous Animals
+	</title>
+
+	<!-- favicons -->
+	<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#333333">
+	<meta name="msapplication-TileImage" content="/img/ms-icon-144x144.png">
+	<meta name="theme-color" content="#333333">
+
+	<!-- bootstrap css -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+
+	<!-- custom css -->
+	<style>
+		section {
+			margin-top: 24px;
+		}
+
+		/*
 			.animal-row:hover {
 				background-color: #555;
 			}
 			*/
-			
-			.animal-alphabetical {
-				position: relative;
-			}
-			.animal-alphabetical:hover {
-				background-color: #555;
-			}
-			a {
-				color: #ddd;
-				text-decoration: none;
-			}
-			a:hover {
-				color: #fff;
-				text-decoration: underline;
-			}
-		</style>
+
+		.animal-alphabetical {
+			position: relative;
+		}
+
+		.animal-alphabetical:hover {
+			background-color: #555;
+		}
+
+		a {
+			color: #ddd;
+			text-decoration: none;
+		}
+
+		a:hover {
+			color: #fff;
+			text-decoration: underline;
+		}
+	</style>
+
+	<!-- jquery js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<!-- custom js -->
+	<script type="text/javascript">
+		/* 
 		
-		<!-- jquery js -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		Owen Gallagher
+		10 June 2021
 		
-		<!-- custom js -->
-		<script type="text/javascript">
-			/* 
-			
-			Owen Gallagher
-			10 June 2021
-			
-			Load anonymous animals.
-			
-			*/
-			
-			const IMG_PROTOCOL = 'https://'
-			const IMG_SERVER_ADDR = 'ssl.gstatic.com'
-			const IMG_PATH = '/docs/common/profile/'
-			const IMG_SIZE = 'lg'
-			const IMG_FORMAT = 'png'
-			const IMG_PREFIX = `${IMG_PROTOCOL}${IMG_SERVER_ADDR}${IMG_PATH}`
-			const IMG_SUFFIX = `_${IMG_SIZE}.${IMG_FORMAT}`
-			
-			const ANIMAL_TEMPLATE = 
-`<div class="animal-row row text-light">
+		Load anonymous animals.
+		
+		*/
+		
+		// TODO compile BASE_PATH server env var into frontend script
+		const BASE_PATH = '/anonymousanimals'
+
+		const IMG_PROTOCOL = 'https://'
+		const IMG_SERVER_ADDR = 'ssl.gstatic.com'
+		const IMG_PATH = '/docs/common/profile/'
+		const IMG_SIZE = 'lg'
+		const IMG_FORMAT = 'png'
+		const IMG_PREFIX = `${IMG_PROTOCOL}${IMG_SERVER_ADDR}${IMG_PATH}`
+		const IMG_SUFFIX = `_${IMG_SIZE}.${IMG_FORMAT}`
+
+		const ANIMAL_TEMPLATE =
+			`<div class="animal-row row text-light">
 	<div class="col">
 		<div class="h-100 d-flex flex-column justify-content-center">
 			<div class="h3 animal-name"></div>
@@ -103,196 +107,199 @@
 			src="">
 	</div>
 </div>`
-			
-			const ANIMAL_NAME_TEMPLATE = 
-`<div class="p-2 col animal-alphabetical">
+
+		const ANIMAL_NAME_TEMPLATE =
+			`<div class="p-2 col animal-alphabetical">
 	<a class="animal-name-ref stretched-link" href=""></a>
 </div>`
-			
-			let animals_container = null
-			let alphabetical_container = null
-			let animal_names = []
-			let animal_urls = {}
-			
-			$(document).ready(function() {
-				console.log('page ready')
-				animals_container = $('#animals-container')
-				alphabetical_container = $('#alphabetical-container')
-				
-				$.ajax('/zoo', {
-					method: 'get',
-					success: function(zoo) {
-						let promises = []
-						console.log(zoo)
-						
-						for (let animal of zoo) {
-							promises.push(
-								animal_to_url(animal)
-								.then(function(animal_url) {
+
+		let animals_container = null
+		let alphabetical_container = null
+		let animal_names = []
+		let animal_urls = {}
+
+		$(document).ready(function () {
+			console.log('page ready')
+			animals_container = $('#animals-container')
+			alphabetical_container = $('#alphabetical-container')
+
+			$.ajax(`${BASE_PATH}/zoo`, {
+				method: 'get',
+				success: function (zoo) {
+					let promises = []
+					console.log(zoo)
+
+					for (let animal of zoo) {
+						promises.push(
+							animal_to_url(animal)
+								.then(function (animal_url) {
 									console.log(`animal ${animal_url[0]} found`)
 									add_animal(animal_url[0], animal_url[1])
-									.then(animal_done)
+										.then(animal_done)
 								})
-								.catch(function(animal_url) {
+								.catch(function (animal_url) {
 									console.log(`animal ${animal_url[0]} not found`)
 								})
-							)
-						}
-						
-						Promise.all(promises)
+						)
+					}
+
+					Promise.all(promises)
 						.finally(alphabetical_animals)
-					},
-					error: function(err) {
-						console.log(err)
-						console.log('failed to fetch animals from server')
-					}
-				})
-			})
-			
-			function animal_to_url(animal) {
-				return new Promise(function(resolve,reject) {
-					// concat prefix + animal + suffix
-					let url = `${IMG_PREFIX}${animal}${IMG_SUFFIX}`
-					
-					try {
-						let img = new Image()
-						img.onload = function() {
-							delete img
-							resolve([animal,url])
-						}
-						img.onerror = function() {
-							delete img
-							reject([animal,url])
-						}
-						img.src = url
-					}
-					catch (err) {
-						console.log('img url test error: ' + err)
-						reject([animal,url])
-					}
-				})
-			}
-			
-			function add_animal(animal_name,img_url) {
-				return new Promise(function(resolve) {
-					let animal = $(ANIMAL_TEMPLATE)
-					
-					animal.find('.animal-name')
-					.html(animal_name)
-					
-					animal.find('img')
-					.prop('src',img_url)
-					
-					animals_container.append(animal)
-					
-					animal_names.push(animal_name)
-					animal_urls[animal_name] = img_url
-					
-					resolve([animal_name,img_url])
-				})
-			}
-			
-			function alphabetical_animals() {
-				console.log(`adding ${animal_names.length} alphabetized animals`)
-				$('#animal-count').html(animal_names.length)
-				
-				animal_names.sort()
-				
-				for (let animal_name of animal_names) {
-					let animal = $(ANIMAL_NAME_TEMPLATE)
-					
-					animal.find('.animal-name-ref')
-					.prop('href',animal_urls[animal_name])
-					.html(animal_name)
-					
-					alphabetical_container.append(animal)
+				},
+				error: function (err) {
+					console.log(err)
+					console.log('failed to fetch animals from server')
 				}
+			})
+		})
+
+		function animal_to_url(animal) {
+			return new Promise(function (resolve, reject) {
+				// concat prefix + animal + suffix
+				let url = `${IMG_PREFIX}${animal}${IMG_SUFFIX}`
+
+				try {
+					let img = new Image()
+					img.onload = function () {
+						delete img
+						resolve([animal, url])
+					}
+					img.onerror = function () {
+						delete img
+						reject([animal, url])
+					}
+					img.src = url
+				}
+				catch (err) {
+					console.log('img url test error: ' + err)
+					reject([animal, url])
+				}
+			})
+		}
+
+		function add_animal(animal_name, img_url) {
+			return new Promise(function (resolve) {
+				let animal = $(ANIMAL_TEMPLATE)
+
+				animal.find('.animal-name')
+					.html(animal_name)
+
+				animal.find('img')
+					.prop('src', img_url)
+
+				animals_container.append(animal)
+
+				animal_names.push(animal_name)
+				animal_urls[animal_name] = img_url
+
+				resolve([animal_name, img_url])
+			})
+		}
+
+		function alphabetical_animals() {
+			console.log(`adding ${animal_names.length} alphabetized animals`)
+			$('#animal-count').html(animal_names.length)
+
+			animal_names.sort()
+
+			for (let animal_name of animal_names) {
+				let animal = $(ANIMAL_NAME_TEMPLATE)
+
+				animal.find('.animal-name-ref')
+					.prop('href', animal_urls[animal_name])
+					.html(animal_name)
+
+				alphabetical_container.append(animal)
 			}
-			
-			function animal_done(animal_url) {
-				let animal_name = animal_url[0]
-				let img_url = animal_url[1]
-				
-				console.log(`added animal ${animal_name} at ${img_url} to page`)
-			}
-		</script>
-	</head>
-	<body class="bg-dark text-light">
-		<div class="container">
-			<h1 class="h1">Google Drive Anonymous Animals</h1>
-		
-			<section>
-				<h2>Alphabetical Short List: <strong><span id="animal-count"></span></strong></h2>
-			
-				<div id="alphabetical-container" class="container row">
+		}
+
+		function animal_done(animal_url) {
+			let animal_name = animal_url[0]
+			let img_url = animal_url[1]
+
+			console.log(`added animal ${animal_name} at ${img_url} to page`)
+		}
+	</script>
+</head>
+
+<body class="bg-dark text-light">
+	<div class="container">
+		<h1 class="h1">Google Drive Anonymous Animals</h1>
+
+		<section>
+			<h2>Alphabetical Short List: <strong><span id="animal-count"></span></strong></h2>
+
+			<div id="alphabetical-container" class="container row">
+			</div>
+		</section>
+
+		<section>
+			<h2 class="h2 ml-0 pl-0">
+				All Animals
+			</h2>
+			<div class="px-4 border-left border-right">
+				<div id="animals-container" class="container">
 				</div>
-			</section>
-		
-			<section>
-				<h2 class="h2 ml-0 pl-0">
-					All Animals
-				</h2>
-				<div class="px-4 border-left border-right">
-					<div id="animals-container" class="container">
-					</div>
-				</div>
-			</section>
-		
-			<section>
-				<h2>References</h2>
-				
-				<ul>
-					<li>
-						<a href="https://gist.github.com/rockwotj/6a356a95732985b09e2b">
-							github.com/rockwotj/download_anonymous_icons_from_drive.rb
-						</a>
-					</li>
-					<li>
-						<a href="https://wayou.github.io/anonymous-animals">
-							wayou.github.io/anonymous-animals
-						</a>
-					</li>
-					<li>
-						<a href="https://a-z-animals.com/animals/">
-							a-z-animals.com/animals
-						</a>
-					</li>
-					<li>
-						<a href="https://jeffersoncheng.com/Anonymous-Animals">
-							jeffersoncheng.com/anonymous-animals
-						</a>
-					</li>
-					<li>
-						<a href="http://www.musesrealm.net/deities/creatures.html">
-							musesrealm.net/deities/creatures
-						</a>
-					</li>
-					<li>
-						<a href="https://medium.com/@roeder/these-are-all-of-the-anonymous-google-docs-animals-i-have-seen-so-far-8e33e0405993">
-							medium.com/@roeder
-						</a>
-					</li>
-					<li>
-						<a href="https://evert.meulie.net/faqwd/complete-list-anonymous-animals-on-google-drive-docs-sheets-slides/">
-							evert.meulie.net/faqwd
-						</a>
-					</li>
-					<li>
-						<a href="https://www.mentalfloss.com/article/545860/wild-things-why-google-docs-feature-anonymous-animals">
-							mentalfloss.com, by Claire Shefchik
-						</a>
-					</li>
-				</ul>
-			</section>
+			</div>
+		</section>
+
+		<section>
+			<h2>References</h2>
+
+			<ul>
+				<li>
+					<a href="https://gist.github.com/rockwotj/6a356a95732985b09e2b">
+						github.com/rockwotj/download_anonymous_icons_from_drive.rb
+					</a>
+				</li>
+				<li>
+					<a href="https://wayou.github.io/anonymous-animals">
+						wayou.github.io/anonymous-animals
+					</a>
+				</li>
+				<li>
+					<a href="https://a-z-animals.com/animals/">
+						a-z-animals.com/animals
+					</a>
+				</li>
+				<li>
+					<a href="https://jeffersoncheng.com/Anonymous-Animals">
+						jeffersoncheng.com/anonymous-animals
+					</a>
+				</li>
+				<li>
+					<a href="http://www.musesrealm.net/deities/creatures.html">
+						musesrealm.net/deities/creatures
+					</a>
+				</li>
+				<li>
+					<a
+						href="https://medium.com/@roeder/these-are-all-of-the-anonymous-google-docs-animals-i-have-seen-so-far-8e33e0405993">
+						medium.com/@roeder
+					</a>
+				</li>
+				<li>
+					<a href="https://evert.meulie.net/faqwd/complete-list-anonymous-animals-on-google-drive-docs-sheets-slides/">
+						evert.meulie.net/faqwd
+					</a>
+				</li>
+				<li>
+					<a href="https://www.mentalfloss.com/article/545860/wild-things-why-google-docs-feature-anonymous-animals">
+						mentalfloss.com, by Claire Shefchik
+					</a>
+				</li>
+			</ul>
+		</section>
+	</div>
+
+	<footer class="container-wide px-3 mb-3">
+		<div class="row">
+			<a href="https://github.com/ogallagher/google_drive_anonymous_animals">2021-06 Owen Gallagher</a>
 		</div>
-		
-		<footer class="container-wide px-3 mb-3">
-			<div class="row">
-				<a href="https://github.com/ogallagher/google_drive_anonymous_animals">2021-06 Owen Gallagher</a>
-			</div>
-			<div class="row">
-				<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-			</div>
-		</footer>
-	</body>
+		<div class="row">
+			<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
+		</div>
+	</footer>
+</body>
+
 </html>
